@@ -1,40 +1,59 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-import ViewText from './components/viewText' ;
+export default function FirstApp() {
 
-export default function App() {
+  const [varOne, setOne] = useState(0);
+  const [varTwo, setTwo] = useState(0);
+  const [varThree, setThree] = useState(0);
 
-  const [visible, setVisible] = useState(true);
 
-  const [buttonText, setbuttonText] = useState('Hide Text Component');
+  const changeOne=()=>{
 
-  const Control = () =>{
- 
-    if(visible == true)
-    {
-      setVisible(false);
-      setbuttonText('Show Text Component');
-    }
-    else
-    {
-      setVisible(true);
-      setbuttonText('Hide Text Component');
-    }
+    setOne(varOne + 1) ;
+
+    console.log('State One Value = ' + varOne);
+
   }
+
+ const changeTwo=()=>{
+
+    setTwo(varTwo + 1) ;
+
+    console.log('State Two Value = ' + varTwo);
+
+  }
+
+  const changeThree=()=>{
+
+    setThree(varThree + 1) ;
+    console.log('State Three Value = ' + varThree);
+
+  }
+
   
   return (
 
     <View style={styleSheet.MainContainer}>
 
-      {
-          // Pass View or Component inside the curly bracket.
+      <TouchableOpacity onPress={changeOne} activeOpacity={0.6} style={styleSheet.button} >
  
-          visible ? <ViewText /> : null
-      }
+         <Text style={styleSheet.TextStyle}> Change State One Value </Text>
+
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={changeTwo} activeOpacity={0.6} style={styleSheet.button} >
  
-      <Button title={buttonText} onPress={Control} />
+         <Text style={styleSheet.TextStyle}> Change State Two Value </Text>
+
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={changeThree} activeOpacity={0.6} style={styleSheet.button} >
+ 
+         <Text style={styleSheet.TextStyle}> Change State Three Value </Text>
+
+      </TouchableOpacity>
       
     </View>
 
@@ -48,7 +67,26 @@ const styleSheet = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FAFAFA',
-    padding: 10
+    padding: 10,
+  },
+
+  button: {
+    
+    width: '80%',
+    paddingTop:5,
+    paddingBottom:5,
+    backgroundColor: '#33691E',
+    borderRadius:5,
+    marginBottom: 20,
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+   
+  TextStyle:{
+      color:'#fff',
+      textAlign:'center',
+      fontSize: 20
   }
  
 });
